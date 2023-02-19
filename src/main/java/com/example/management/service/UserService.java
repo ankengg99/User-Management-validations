@@ -1,8 +1,5 @@
 package com.example.management.service;
 
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-
-
 import com.example.management.dao.UserRepository;
 import com.example.management.moudle.User;
 import org.json.JSONObject;
@@ -23,9 +20,9 @@ public class UserService {
     }
     public List<User> getUser(Integer id){
         if(null!=id){
-           List<User> user=new ArrayList<>();
-           user.add(userRepository.findById(id).get());
-           return user;
+            List<User> user=new ArrayList<>();
+            user.add(userRepository.findById(id).get());
+            return user;
         }
         else{
             return userRepository.findAll();
@@ -44,7 +41,7 @@ public class UserService {
     public void deleteUser(Integer id){
         userRepository.deleteById(id);
     }
-     public User setUser(JSONObject jsonObject){
+    public User setUser(JSONObject jsonObject){
         User user=new User();
         user.setUserId(jsonObject.getInt("userId"));
         user.setDate(LocalDate.ofEpochDay(jsonObject.getInt("date")));
@@ -54,5 +51,5 @@ public class UserService {
         user.setPhoneNo(jsonObject.getString("phoneNo"));
         user.setDateOfBirth(jsonObject.getString("dateOfBirth"));
         return user;
-     }
+    }
 }

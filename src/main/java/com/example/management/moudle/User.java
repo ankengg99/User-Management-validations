@@ -1,12 +1,10 @@
 package com.example.management.moudle;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Generated;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
@@ -16,14 +14,14 @@ import java.time.LocalTime;
 @NoArgsConstructor
 @Data
 @Entity
+@Table(name="users")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-   private Integer userId;
+    private Integer userId;
     private String username;
     private String dateOfBirth;
-      private String  email;
+    private String  email;
     private String phoneNo;
     private LocalDate date;
-     private LocalTime time;
+    private LocalTime time;
 }
