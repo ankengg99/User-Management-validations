@@ -30,6 +30,7 @@ public class UserService {
     }
     public void updateUser(Integer id,User newuser){
         User user=userRepository.findById(id).get();
+        user.setUserId(newuser.getUserId());
         user.setDate(newuser.getDate());
         user.setEmail(newuser.getEmail());
         user.setTime(newuser.getTime());
@@ -43,8 +44,11 @@ public class UserService {
     }
     public User setUser(JSONObject jsonObject){
         User user=new User();
+        if(jsonObject.has("userId"))
         user.setUserId(jsonObject.getInt("userId"));
+        if(jsonObject.has("date"))
         user.setDate(LocalDate.ofEpochDay(jsonObject.getInt("date")));
+        if(jsonObject.has("time"))
         user.setTime(LocalTime.ofSecondOfDay(jsonObject.getInt("time")));
         user.setEmail(jsonObject.getString("email"));
         user.setUsername(jsonObject.getString("userName"));
